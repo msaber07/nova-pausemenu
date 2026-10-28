@@ -5,7 +5,7 @@ Config.Locale = 'en'
 
 -- Genel Sunucu Bilgileri
 Config.Discord  = 'discord.gg/yourserver'
-Config.SubLabel = 'v1.0.0'
+Config.SubLabel = 'v1.1.0'
 
 -- Sunucu duyurusu (Sunucu sekmesi)
 Config.Announce = {
@@ -120,6 +120,7 @@ Config.Locales = {
         lbl_stat_community = 'Topluluk',
         title_announcement = 'Duyuru',
         title_rules = 'Kurallar',
+        title_keys = 'Tuş Atamaları',
         
         -- Confirmation Modal (Disconnect Confirmation)
         confirm_title = 'Ayrılmak İstiyor musunuz?',
@@ -175,6 +176,7 @@ Config.Locales = {
         lbl_stat_community = 'Community',
         title_announcement = 'Announcement',
         title_rules = 'Rules',
+        title_keys = 'Keybinds',
         
         -- Confirmation Modal (Disconnect Confirmation)
         confirm_title = 'Are you sure?',

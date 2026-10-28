@@ -53,8 +53,6 @@ local function HudVisible(show)
         pcall(function() exports['compass']:setVisible(show) end)
     end
 
-    -- GTA Radar
-    DisplayRadar(show)
 end
 
 -- ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
@@ -205,16 +203,23 @@ RegisterNUICallback('disconnect', function(_, cb)
     cb('ok')
 end)
 
--- Native GTA ESC Menu (Map and Settings redirected here)
+-- Native GTA menu. Map uses the multiplayer pause page. Settings uses the landing menu.
 RegisterNUICallback('openNative', function(data, cb)
+    local which = data and data.which or 'map'
     CloseMenu()
     mapState = 'pending'
     cb('ok')
     CreateThread(function()
-        Wait(120)
-        ActivateFrontendMenu(GetHashKey('FE_MENU_VERSION_SP_PAUSE'), false, -1)
-        if data and data.which == 'map' then
-            -- Pause opens the map directly in the menu
+        if which == 'settings' then
+            ActivateFrontendMenu(GetHashKey('FE_MENU_VERSION_LANDING_MENU'), false, -1)
+        else
+            ActivateFrontendMenu(GetHashKey('FE_MENU_VERSION_MP_PAUSE'), false, -1)
+        end
+        local deadline = GetGameTimer() + 1000
+        while not IsPauseMenuActive() and GetGameTimer() < deadline do
+            Wait(0)
+        end
+        if which == 'map' and IsPauseMenuActive() then
             PauseMenuceptionGoDeeper(0)
         end
     end)

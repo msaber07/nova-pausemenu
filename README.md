@@ -28,7 +28,7 @@ Standalone ESC menu. It replaces the native GTA pause screen. It runs with QBCor
 Config.Locale = 'en' -- 'en' or 'tr'
 
 Config.Discord  = 'discord.gg/yourserver'
-Config.SubLabel = 'v1.0.0'
+Config.SubLabel = 'v1.1.0'
 
 Config.Announce = {
     tr = 'Hafta sonu 2x maaş etkinliği aktif!',

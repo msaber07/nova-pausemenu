@@ -33,7 +33,9 @@ const MOCK_LOCALES = {
     lbl_unemployed: 'İşsiz', lbl_none: 'Yok', title_online_players: 'Çevrimiçi Oyuncular',
     placeholder_search: 'Oyuncu ara...', title_server_info: 'Sunucu Bilgisi',
     lbl_stat_players: 'Oyuncu', lbl_stat_uptime: 'Uptime', lbl_stat_community: 'Topluluk',
-    title_announcement: 'Duyuru', title_rules: 'Kurallar', title_keys: 'Tuş Atamaları'
+    title_announcement: 'Duyuru', title_rules: 'Kurallar', title_keys: 'Tuş Atamaları',
+    confirm_title: 'Ayrılmak İstiyor musunuz?', confirm_desc: 'Sunucudan çıkış yapmak üzeresiniz. Emin misiniz?',
+    confirm_yes: 'Evet, Ayrıl', confirm_no: 'Hayır, Vazgeç'
   },
   en: {
     nav_info: 'Information', nav_info_sub: 'Character & wallet',
@@ -48,14 +50,16 @@ const MOCK_LOCALES = {
     lbl_unemployed: 'Unemployed', lbl_none: 'None', title_online_players: 'Online Players',
     placeholder_search: 'Search players...', title_server_info: 'Server Information',
     lbl_stat_players: 'Players', lbl_stat_uptime: 'Uptime', lbl_stat_community: 'Community',
-    title_announcement: 'Announcement', title_rules: 'Rules', title_keys: 'Keybinds'
+    title_announcement: 'Announcement', title_rules: 'Rules', title_keys: 'Keybinds',
+    confirm_title: 'Are you sure?', confirm_desc: 'You are about to disconnect from the server. Do you want to proceed?',
+    confirm_yes: 'Yes, Disconnect', confirm_no: 'No, Cancel'
   }
 };
 
 const MOCK = {
   tr: {
     server: { 
-      name: 'NOVA ROLEPLAY', sub: 'v1.0.0', players: 12, max: 64, uptime: '2sa 45dk',
+      name: 'NOVA ROLEPLAY', sub: 'v1.1.0', players: 12, max: 64, uptime: '2sa 45dk',
       discord: 'discord.gg/yourserver',
       announce: 'Hafta sonu 2x maaş etkinliği aktif! Kurallara uymayan oyuncular kalıcı olarak uzaklaştırılır.',
       rules: ['RDM / VDM yasaktır.', 'Power gaming ve metagaming yasaktır.', 'OOC sohbeti minimumda tutun, rol içi (IC) kalın.', 'Yetkililere saygılı olun.', 'FailRP yapmayın.'] 
@@ -78,7 +82,7 @@ const MOCK = {
   },
   en: {
     server: { 
-      name: 'NOVA ROLEPLAY', sub: 'v1.0.0', players: 12, max: 64, uptime: '2h 45m',
+      name: 'NOVA ROLEPLAY', sub: 'v1.1.0', players: 12, max: 64, uptime: '2h 45m',
       discord: 'discord.gg/yourserver',
       announce: 'Weekend 2x salary event is active! Players who violate the rules will be permanently banned.',
       rules: ['RDM / VDM is strictly prohibited.', 'Powergaming and Metagaming are forbidden.', 'Keep OOC chat to a minimum, stay In-Character.', 'Respect staff members.', 'Avoid FailRP.'] 
@@ -166,6 +170,7 @@ function renderAll() {
   
   // Sunucu Adı ve Oyuncu ID
   $('#serverName').textContent = s.name;
+  if ($('#brandSub')) $('#brandSub').textContent = s.sub || '';
   $('#pId').textContent = p.id;
   
   // Saat güncellemesi

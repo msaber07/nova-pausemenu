@@ -25,6 +25,8 @@ local function fmtDuration(sec)
     return (localeData.uptime_fmt_min or '%ddk'):format(m)
 end
 
+local lastMenuData = {}
+
 -- ── Player Session Tracker ──
 AddEventHandler('playerJoining', function()
     sessionStart[source] = os.time()
@@ -32,6 +34,7 @@ end)
 
 AddEventHandler('playerDropped', function()
     sessionStart[source] = nil
+    lastMenuData[source] = nil
 end)
 
 RegisterNetEvent('QBCore:Server:OnPlayerLoaded', function()
@@ -211,7 +214,15 @@ end
 
 RegisterNetEvent('nova-pausemenu:server:requestData', function()
     local src = source
-    TriggerClientEvent('nova-pausemenu:client:data', src, collectData(src))
+    local now = GetGameTimer()
+    local cached = lastMenuData[src]
+    if cached and (now - cached.at) < 500 then
+        TriggerClientEvent('nova-pausemenu:client:data', src, cached.data)
+        return
+    end
+    local data = collectData(src)
+    lastMenuData[src] = { at = now, data = data }
+    TriggerClientEvent('nova-pausemenu:client:data', src, data)
 end)
 
 local githubRepo = 'msaber07/nova-pausemenu'
