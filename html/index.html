@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nova Pause Menu</title>
+  <link rel="stylesheet" href="style.css?v=6" />
+</head>
+<body>
+  <div id="root" class="hidden">
+    <div class="scrim"></div>
+
+    <!-- SOL KOLON -->
+    <div class="left">
+      <div class="brand">
+        <div class="brand-logo">N</div>
+        <div>
+          <div class="brand-name" id="serverName">NOVA ROLEPLAY</div>
+          <div class="brand-sub">
+            <span id="clock">00:00</span>
+            <i></i>
+            <span><span id="lblPlayerId">Oyuncu ID:</span> <b id="pId">1</b></span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-item active" data-tab="info">
+          <span class="ni-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2"/><path d="M14 10h5M14 14h4"/></svg></span>
+          <span class="ni-tx"><b id="navInfo">Bilgi</b><small id="navInfoSub">Karakter & cüzdan</small></span>
+        </button>
+        <button class="nav-item" data-tab="players">
+          <span class="ni-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a3 3 0 0 1 0 5.74"/></svg></span>
+          <span class="ni-tx"><b id="navPlayers">Oyuncular</b><small id="navPlayersSub">Çevrimiçi liste</small></span>
+        </button>
+        <button class="nav-item" data-tab="server">
+          <span class="ni-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 8h.01"/></svg></span>
+          <span class="ni-tx"><b id="navServer">Sunucu</b><small id="navServerSub">Bilgi & kurallar</small></span>
+        </button>
+        <button class="nav-item" data-native="settings">
+          <span class="ni-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="12" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
+          <span class="ni-tx"><b id="navSettings">Ayarlar</b><small id="navSettingsSub">Oyun ayarları (ESC)</small></span>
+        </button>
+        <button class="nav-item" data-native="map">
+          <span class="ni-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 4-6 2v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/></svg></span>
+          <span class="ni-tx"><b id="navMap">Harita</b><small id="navMapSub">Dünya haritasını aç</small></span>
+        </button>
+        <button class="nav-item danger" id="btnDisconnect">
+          <span class="ni-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7V5a2 2 0 0 1 2-2h7v18h-7a2 2 0 0 1-2-2v-2"/><path d="M15 12H3m0 0 3-3M3 12l3 3"/></svg></span>
+          <span class="ni-tx"><b id="navQuit">Ayrıl</b><small id="navQuitSub">Sunucudan çık</small></span>
+        </button>
+      </nav>
+
+      <div class="lcards">
+        <div class="lc">
+          <span class="lc-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 19.5c1.4-3 3.8-4.5 7-4.5s5.6 1.5 7 4.5"/></svg></span>
+          <div>
+            <small id="lblCardName">İSİM</small>
+            <b id="cName">—</b>
+          </div>
+        </div>
+        <div class="lc">
+          <span class="lc-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18"/></svg></span>
+          <div>
+            <small id="lblCardJob">MESLEK</small>
+            <b id="cJob">—</b>
+          </div>
+        </div>
+        <div class="lc">
+          <span class="lc-ic ok"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.4"/><path d="M6 10v4M18 10v4"/></svg></span>
+          <div>
+            <small id="lblCardCash">NAKİT</small>
+            <b id="cCash">$0</b>
+          </div>
+        </div>
+        <div class="lc">
+          <span class="lc-ic gold"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16L12 4 4 10zM6 10v7M10 10v7M14 10v7M18 10v7M4 17h16M3 20h18"/></svg></span>
+          <div>
+            <small id="lblCardBank">BANKA</small>
+            <b id="cBank">$0</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="links">
+        <a class="lnk discord" id="lnkDiscordHref" target="_blank">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17.5 4.5 20v-3.2A8 8 0 1 1 8.2 18"/></svg>
+          <span id="lDiscord">discord.gg/yourserver</span>
+        </a>
+        <button class="lnk resume" id="btnResume">
+          <span class="kbd">ESC</span> 
+          <span id="btnResumeText">Oyuna Dön</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- SAĞ: İçerik Paneli -->
+    <div class="right">
+      <div class="panel" id="panel">
+        <!-- BİLGİ -->
+        <section class="tab active" data-tab="info">
+          <h2 class="t-title"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="12" r="2"/><path d="M14 10h5M14 14h4"/></svg> <span id="titleCharInfo">Karakter Bilgisi</span></h2>
+          <div class="info-card">
+            <div class="ic-av"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5 19.5c1.4-3 3.8-4.5 7-4.5s5.6 1.5 7 4.5"/></svg></div>
+            <div class="ic-name" id="iName">—</div>
+            <div class="ic-cid"><span id="lblCid">Vatandaşlık No</span>: <b id="iCid">—</b></div>
+            <div class="ic-row"><span id="lblPhone">Telefon</span><b id="iPhone">—</b></div>
+            <div class="ic-row"><span id="lblJob">Meslek</span><b id="iJob">—</b></div>
+            <div class="ic-row"><span id="lblGang">Çete</span><b id="iGang">—</b></div>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <span class="s-ic ok"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.4"/><path d="M6 10v4M18 10v4"/></svg></span>
+              <div>
+                <small id="lblStatCash">Nakit</small>
+                <b id="iCash">$0</b>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="s-ic gold"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10h16L12 4 4 10zM6 10v7M10 10v7M14 10v7M18 10v7M4 17h16M3 20h18"/></svg></span>
+              <div>
+                <small id="lblStatBank">Banka</small>
+                <b id="iBank">$0</b>
+              </div>
+            </div>
+            <div class="stat">
+              <span class="s-ic blue"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10M7 21h10M8 3c0 4.5 8 4.5 8 9s-8 4.5-8 9M16 3c0 4.5-8 4.5-8 9s8 4.5 8 9"/></svg></span>
+              <div>
+                <small id="lblStatSession">Oturum</small>
+                <b id="iPlay">—</b>
+              </div>
+            </div>
+          </div>
+          
+          <h3 class="sub" id="titleKeys">Tuş Atamaları</h3>
+          <div class="keys" id="keysList"></div>
+        </section>
+
+        <!-- OYUNCULAR -->
+        <section class="tab" data-tab="players">
+          <h2 class="t-title">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a3 3 0 0 1 0 5.74"/></svg> 
+            <span id="titleOnlinePlayers">Çevrimiçi Oyuncular</span> 
+            <span class="badge" id="plCount">0 / 48</span>
+          </h2>
+          <div class="search">
+            <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-3.5-3.5"/></svg>
+            <input id="plSearch" placeholder="Oyuncu ara..." />
+          </div>
+          <div class="players" id="playersList"></div>
+        </section>
+
+        <!-- SUNUCU -->
+        <section class="tab" data-tab="server">
+          <h2 class="t-title"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 8h.01"/></svg> <span id="titleServerInfo">Sunucu Bilgisi</span></h2>
+          <div class="srv-grid">
+            <div class="srv-stat">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="9.5" cy="7" r="3"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a3 3 0 0 1 0 5.74"/></svg>
+              <div>
+                <b id="sPlayers">0 / 48</b>
+                <span id="lblServerStatPlayers">Oyuncu</span>
+              </div>
+            </div>
+            <div class="srv-stat">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 18v-3M10 18V9M15 18V6M20 18V4"/></svg>
+              <div>
+                <b id="sUptime">—</b>
+                <span id="lblServerStatUptime">Uptime</span>
+              </div>
+            </div>
+            <div class="srv-stat">
+              <svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17.5 4.5 20v-3.2A8 8 0 1 1 8.2 18"/></svg>
+              <div>
+                <b id="sDiscord">—</b>
+                <span id="lblServerStatCommunity">Topluluk</span>
+              </div>
+            </div>
+          </div>
+          <h3 class="sub" id="titleAnnouncement">Duyuru</h3>
+          <div class="announce" id="sAnnounce">—</div>
+          <h3 class="sub" id="titleRules">Kurallar</h3>
+          <ol class="rules" id="sRules"></ol>
+        </section>
+      </div>
+    </div>
+
+    <!-- ONAY MODALI -->
+    <div id="confirmModal" class="confirm-modal hidden">
+      <div class="confirm-box">
+        <div class="confirm-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4 3 20h18L12 4z"/><path d="M12 10v4M12 17h.01"/></svg></div>
+        <h3 id="confirmTitle">Ayrılmak İstiyor musunuz?</h3>
+        <p id="confirmDesc">Sunucudan çıkış yapmak üzeresiniz. Emin misiniz?</p>
+        <div class="confirm-actions">
+          <button class="c-btn c-yes" id="btnConfirmYes">Evet, Ayrıl</button>
+          <button class="c-btn c-no" id="btnConfirmNo">Hayır, Vazgeç</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js?v=6"></script>
+</body>
+</html>
